@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <input formControlName="username" class="form-control" type="text" placeholder="username..." />
+    <div *ngIf="form.get('username').dirty && form.get('username').hasError('required')" class="alert alert-danger">
+      username is required
+    </div>
+    <div *ngIf="form.get('username').dirty && form.get('username').hasError('uniqueUsernameError')" class="alert alert-danger">
+      username must be unique
+    </div>
+  </div>
+    <div class="form-group">
+      <input formControlName="password" class="form-control" type="password" placeholder="password..." />
+      <div *ngIf="form.get('password').dirty && form.get('password').hasError('required')" class="alert alert-danger">
+        password is required
+      </div>
+    </div>
+    <div class="form-group">
+      <input formControlName="passwordConfirmation" class="form-control" type="password" placeholder="reenter password..." />
+      <div *ngIf="form.get('passwordConfirmation').dirty && form.get('passwordConfirmation').hasError('required')" class="alert alert-danger">
+        password confirmation is required
+      </div>
+    </div>
+    <div *ngIf="form.get('password').dirty && form.get('passwordConfirmation').dirty && form.get('password').dirty && form.hasError('passwordMatchingError')" class="text-danger">
+      passwords need to match
+    </div>
+  <div *ngIf="frontEndFrameworks?.length" class="form-group">
+    <h4 class="text-center">Favorite Front End Framework</h4>
+    <div class="radio" *ngFor="let frontEndFramework of frontEndFrameworks">
+      <label><input formControlName="frontEndFramework" name="frontEndFramework" type="radio" value="{{frontEndFramework}}" />{{frontEndFramework}}</label>
+    </div>
+  </div>
+</form>

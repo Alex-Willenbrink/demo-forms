@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <h4 class="text-center">Power Levels</h4>
+  <div class="form-group">
+    <input class="form-control" type="number" formControlName="strength" />
+    <div *ngIf="form.get('strength').dirty && form.get('strength').hasError('greaterThanNineThousandError')" class="alert alert-danger">
+      Power levels can't be over 9000
+    </div>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="number" formControlName="speed" />
+  </div>
+</form>
